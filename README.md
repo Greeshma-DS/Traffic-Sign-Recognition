@@ -8,7 +8,7 @@ Traffic Sign Recognition is a **deep learning project** that classifies **43 typ
 - Data preprocessing pipeline
 - CNN model for image classification
 - Model evaluation on a test set
-- Deployment via **Streamlit** for interactive predictions
+- Deployment via **Streamlit** for real-time traffic sign prediction
 
 It is useful for **autonomous driving systems, road safety applications, and computer vision learning**.
 
@@ -20,7 +20,7 @@ It is useful for **autonomous driving systems, road safety applications, and com
 2. [Dataset](#dataset)  
 3. [Repository Structure](#repository-structure)  
 4. [Installation](#installation)  
-5. [Usage](#usage)  
+5. [How to Execute](#how-to-execute)  
 6. [Model Architecture](#model-architecture)  
 7. [Training & Evaluation](#training--evaluation)  
 8. [Streamlit Web App](#streamlit-web-app)  
@@ -98,36 +98,67 @@ cd Traffic-Sign-Recognition
 pip install tensorflow keras streamlit pillow matplotlib pandas scikit-learn
 ```
 
-3. Optional: Launch Jupyter Notebook to train the model:
+---
+
+## 🚀 How to Execute
+
+### 1️⃣ Option 1: Using Jupyter Notebook (Training & Testing)
+
+This is for users who want to **train the CNN model from scratch** or evaluate it.
+
+1. Open `traffic_sign_classification.ipynb`:
 
 ```bash
-jupyter notebook
+jupyter notebook traffic_sign_classification.ipynb
 ```
+
+2. Run the notebook cells **sequentially**:
+
+* **Cell 1:** Import libraries and set paths
+* **Cell 2:** Load and preprocess training and test data
+* **Cell 3:** Encode labels (one-hot) and split dataset
+* **Cell 4:** Build the CNN model
+* **Cell 5:** Train the model (`model.fit(...)`)
+* **Cell 6:** Evaluate model on validation/test set
+* **Cell 7:** Save the trained model (`traffic_sign_model.h5`)
+* **Cell 8:** Visualize accuracy and loss curves
+
+> 💡 **Tip:** Cell 3 (data preprocessing) may take longer depending on your system and dataset size.
 
 ---
 
-## 🚀 Usage
+### 2️⃣ Option 2: Using Streamlit App (Prediction Only)
 
-### 1. Training the Model
+This is for users who want to **use the trained model** without retraining.
 
-* Open `traffic_sign_classification.ipynb`
-* Run all cells sequentially:
+1. Make sure `traffic_sign_model.h5` is in the repository folder.
+2. Install Streamlit if not installed:
 
-  * Load and preprocess data
-  * Split into training/validation
-  * Build CNN model
-  * Train model
-  * Save trained model as `traffic_sign_model.h5`
+```bash
+pip install streamlit
+```
 
-### 2. Running the Streamlit App
+3. Run the Streamlit app:
 
 ```bash
 streamlit run app.py
 ```
 
-* Upload an image of a traffic sign
-* Get the predicted class and confidence
-* Optional: view probabilities for all classes
+4. Your browser will open the app interface. Steps in the app:
+
+* Click **“Upload an image”** and select a traffic sign image (`jpg/png/jpeg`)
+* The app will **display the uploaded image**
+* Click **“Classify Image”** to see the predicted traffic sign name and confidence
+* Optionally, expand **“See detailed probabilities”** to view top class probabilities
+
+---
+
+### 3️⃣ Notes
+
+* Ensure that your **Train/Test folders** and **CSV files** (`Train.csv`, `Test.csv`) are in the **correct paths**.
+* Image dimensions will automatically be resized to **30x30 pixels** for CNN input.
+* Model predictions are based on **43-class classification**, corresponding to the traffic sign categories.
+* For **best performance**, train the model on a system with a **GPU**.
 
 ---
 
@@ -175,6 +206,7 @@ streamlit run app.py
 * Confidence score shown
 * Optionally see probabilities for top classes
 
+
 ---
 
 ## 🔮 Future Work
@@ -210,9 +242,3 @@ This project is **open-source** and free for **educational and research purposes
 * [Deep Learning for Computer Vision](https://www.deeplearningbook.org/)
 
 ---
-
-```
-
----
-
-```
