@@ -1,7 +1,6 @@
 
 # 🚦 Traffic Sign Recognition
 
-![Traffic Sign Example](https://raw.githubusercontent.com/your-username/Traffic-Sign-Recognition/main/sample_image.png)
 
 Traffic Sign Recognition is a **deep learning project** that classifies **43 types of traffic signs** using **Convolutional Neural Networks (CNNs)**. This project includes:
 
